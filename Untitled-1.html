@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On peut parler ?</title>
+  <style>
+    body {
+      background-color: #0f2e1f;
+      color: #eafbea;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 300px; height: 300px;
+      background: url('yesil-goz.png') no-repeat center/contain;
+      opacity: 0.15;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    h1 { font-size: 24px; margin-bottom: 10px; z-index: 2; }
+    p { font-size: 18px; margin-bottom: 20px; z-index: 2; }
+
+    button {
+      background: none;
+      border: 2px solid;
+      padding: 12px 20px;
+      margin: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 8px;
+      width: 80%;
+      max-width: 300px;
+      transition: 0.3s;
+      z-index: 2;
+    }
+
+    button:hover { transform: scale(1.05); }
+
+    .btn-yesil { color: #8fffa1; border-color: #8fffa1; }
+    .btn-yesil:hover { background-color: #8fffa1; color: #0f2e1f; }
+
+    .btn-bordo { color: #a83252; border-color: #a83252; }
+    .btn-bordo:hover { background-color: #a83252; color: #fff; }
+
+    .btn-mavi { color: #3d85c6; border-color: #3d85c6; }
+    .btn-mavi:hover { background-color: #3d85c6; color: #fff; }
+
+    .btn-muzik {
+      background-color: #eafbea;
+      color: #0f2e1f;
+      border: none;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Je ne veux pas te perdre...</h1>
+  <p>Appelle-moi, parlons.</p>
+  <button class="btn-yesil" onclick="ara()">D'accord, je t'appellerai</button>
+  <button class="btn-bordo" onclick="istemiyorum()">Non, je ne veux pas</button><br>
+  <button class="btn-muzik" onclick="toggleMusic()">🎵 Lancer / Arrêter la musique</button>
+
+  <iframe id="yt" src="https://www.youtube.com/embed/BXbsO6rO8DQ?autoplay=0&loop=1&playlist=BXbsO6rO8DQ&controls=0&playsinline=1"
+    frameborder="0"
+    style="display:none; width:1px; height:1px;"
+    allow="autoplay; encrypted-media"></iframe>
+
+  <script>
+    let musicOn = false;
+    function toggleMusic() {
+      const yt = document.getElementById('yt');
+      musicOn = !musicOn;
+      yt.style.display = musicOn ? 'block' : 'none';
+    }
+
+    function ara() {
+      document.body.innerHTML = `
+        <h1>Je t’aime tellement 💚</h1>
+        <p>Je t’attends... appelle-moi s’il te plaît.</p>
+      `;
+    }
+
+    function istemiyorum() {
+      document.body.innerHTML = `
+        <h1>...Tu es bête alors ?</h1>
+        <button class="btn-bordo" onclick="evetMalim()">Oui, je suis bête</button>
+        <button class="btn-mavi" onclick="hayirMalSensin()">Non, c’est toi le/la bête</button>
+      `;
+    }
+
+    function evetMalim() {
+      document.body.innerHTML = `
+        <h1>Alors appelle-moi 📞</h1>
+        <p>Je t’aime 💙</p>
+      `;
+    }
+
+    function hayirMalSensin() {
+      document.body.innerHTML = `
+        <h1>J’ai dit que j’étais bête...</h1>
+        <p>Et toi, tu dis quoi ?</p>
+        <button class="btn-bordo" onclick="git()">Je ne veux pas, pars</button>
+        <button class="btn-yesil" onclick="tamamAriyorum()">D'accord, j’appelle</button>
+      `;
+    }
+
+    function git() {
+      document.body.innerHTML = `
+        <h1>D’accord alors.</h1>
+        <p>C’est toi qui décides.</p>
+      `;
+    }
+
+    function tamamAriyorum() {
+      document.body.innerHTML = `
+        <h1>Tu m’appelles quand ?</h1>
+        <button class="btn-mavi" onclick="simdi()">Maintenant</button>
+        <button class="btn-bordo" onclick="musait()">Quand je peux</button>
+      `;
+    }
+
+    function simdi() {
+      document.body.innerHTML = `
+        <h1>D’accord, je t’attends...</h1>
+        <p>Tout de suite 💚</p>
+      `;
+    }
+
+    function musait() {
+      document.body.innerHTML = `
+        <h1>Je t’attendrai aussi à ce moment-là.</h1>
+        <p>Quand tu veux.</p>
+      `;
+    }
+  </script>
+</body>
+</html>
